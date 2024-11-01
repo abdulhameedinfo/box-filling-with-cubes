@@ -2,9 +2,9 @@ using BoxFillingWithCubes.Models;
 
 namespace BoxFillingWithCubes.Utils
 {
-    public static class InputParser
+    public class InputParser: IInputParser
     {
-        public static (Box, CubeSet) ParseLine(string line)
+        public (Box, CubeSet) ParseLine(string line)
         {
             var parts = line.Trim().Split(' ').Select(int.Parse).ToArray();
             var box = new Box(parts[0], parts[1], parts[2]);

@@ -1,10 +1,11 @@
 using BoxFillingWithCubes.Models;
+using BoxFillingWithCubes.Utils;
 
 namespace BoxFillingWithCubes.Services
 {
-    public static class BoxFillingService
+    public class BoxFillingService: IBoxFillingService
     {
-        public static int CalculateMinimumCubes(Box box, CubeSet cubes)
+        public int CalculateMinimumCubes(Box box, CubeSet cubes)
         {
             int volumeRemaining = box.Volume;
             int totalCubesUsed = 0;
@@ -12,10 +13,10 @@ namespace BoxFillingWithCubes.Services
             // Iterate from largest cube size downwards
             for (int i = cubes.Quantities.Length - 1; i >= 0; i--)
             {
-                int cubeSize = (int)Math.Pow(2, i);
-                int cubeVolume = cubeSize * cubeSize * cubeSize;
+                int cubeSize = CalculationHelper.GetCubeSize(i);
+                int cubeVolume = CalculationHelper.CalculateBoxVolume(cubeSize, cubeSize, cubeSize);
 
-                int maxFit = volumeRemaining / cubeVolume;
+                int maxFit = CalculationHelper.CalculateRequiredCubes(volumeRemaining, cubeVolume);
                 int cubesToUse = Math.Min(maxFit, cubes.Quantities[i]);
 
                 totalCubesUsed += cubesToUse;
