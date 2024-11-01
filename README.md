@@ -5,7 +5,7 @@ Algorithm to determine the minimum number of cubes needed to completely fill a b
 Tis program aims to solve the problem of filling a given box with cubes of specific sizes. The box has integer dimensions: 'length x width x height', and a set of cubes are provided with side lengths that are power of 2, such as 1x1x1, 2x2x2, 4x4x4, etc.
 
 # Input
-- The input file contains one or more lines.
+- The input file (problem.txt) contains one or more lines.
 - Each line specifies a problem, with the first three integers representing the box dimensions.
 - The subsequent numbers represents available cubes in a list form, where each position corresponds to a specific cube size ( from smallest to largest).
 
@@ -22,11 +22,19 @@ This specifies a box with dimensions 2x3x4 and cube counts:
 Given a file `problems.txt` with the following content: 
 10 10 10 2000 10 10 10 900 4 4 8 10 10 1
 Expected output:
-1000 -1 9
+1000
+-1
+9
 
 ## Running the Program
 1. Clone this repository.
 2. Ensure you have C# Dev Kit extension (for VSCode) or Visual Studio installed.
+3. Open the terminal, Go to BoxFillingWthCubes directory by cd BoxFillingWthCubes
 3. Run the program using: dotnet run
 
   
+## Test Cases
+- Large boxes with limited cube availability.
+- Boxes where the exact number of cubes is insufficient.
+- Expected output: `-1`
+
